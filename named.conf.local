@@ -1,0 +1,18 @@
+include "/etc/bind/c1.key";
+
+server 192.168.41.10 {
+        keys { c1key; };
+};
+
+zone "lab.mabeza.300.ops" {
+        type secondary;
+        primaries { 192.168.41.10; };
+        file "/var/cache/bind/db.lab.mabeza.300.ops";
+};
+
+
+zone "41.168.192.in-addr.arpa" {
+        type secondary;
+        primaries { 192.168.41.10; };
+        file "/var/cache/bind/db.41.168.192.in-addr.arpa";
+};

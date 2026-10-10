@@ -1,0 +1,21 @@
+options {
+        directory "/var/cache/bind";
+
+        forwarders { 192.168.41.5; };
+        forward only;
+
+        dnssec-validation no;
+
+        listen-on { any; };
+        allow-query { 127.0.0.1; 192.168.41.0/24; };
+
+        allow-recursion { 127.0.0.1; 192.168.41.0/24; };
+        allow-query-cache { 127.0.0.1; 192.168.41.0/24; };
+
+        blackhole {
+                10.0.0.0/8;
+                172.16.0.0/12;
+                224.0.0.0/8;
+                169.254.0.0/16;
+        };
+};
